@@ -11,9 +11,10 @@ fun main(args: Array<String>) {
 
     try {
         val arr:ArrayList<Int> = ArrayList()
-        for (i in 1..args[0].toInt()) {
+        /*for (i in 1..args[0].toInt()) {
             arr.add(i)
-        }
+        }*/
+        (1..args[0].toInt()).mapTo(arr) {it}
         printOneByOne(arr)
     } catch (e: NumberFormatException) {
         println("fuck you!")

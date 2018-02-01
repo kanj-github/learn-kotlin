@@ -1,9 +1,4 @@
 fun main(args: Array<String>) {
-    val data = mapOf("email" to "mail@domain.com")
-    val email = data["email"] ?: "No email"
-    println("-------")
-    println(email)
-
     val text = """
     |Tell me and I forget.
     |Teach me and I remember.
@@ -13,4 +8,12 @@ fun main(args: Array<String>) {
     """.trimMargin()
 
     println(text)
+
+    val b = Box(9)
+    //b.capacity = 10
+    b.stuff = "A string"
+}
+
+class Box(capacity: Int) { // capacity is val by default
+    var stuff: Any = Box(7)
 }

@@ -12,8 +12,17 @@ fun main(args: Array<String>) {
     val b = Box(9)
     //b.capacity = 10
     b.stuff = "A string"
+    b.showNumber()
 }
 
 class Box(capacity: Int) { // capacity is val by default
-    var stuff: Any = Box(7)
+    var stuff: Any? = null
+    val initialisedNumber: Int
+
+    init {
+        println("initialisedNumber")
+        initialisedNumber = 39
+    }
+
+    fun showNumber() = println(initialisedNumber)
 }

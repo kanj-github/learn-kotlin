@@ -1,6 +1,6 @@
 class StuffContainer(var stuff: MutableList<String>?) {
     fun appendSomeStuff(newStuff: List<String>) { // Appends to stuff, initialising it if null
-        stuff?.addAll(newStuff) ?: let { stuff = ArrayList<String>(newStuff) }
+        stuff?.addAll(newStuff) ?: let { stuff = newStuff.toMutableList() }
     }
 }
 

@@ -6,7 +6,7 @@ interface BaseCallback<in T : BaseUi> {
     fun onUiReady(ui: T)
 }
 
-interface DerivedCallback<T : DerivedUi> : BaseCallback<T> {
+interface DerivedCallback : BaseCallback<DerivedUi> {
     fun onSomeAction()
 }
 
@@ -22,12 +22,12 @@ open class BaseUiImpl<U : BaseUi, T : BaseCallback<U>> : BaseUi {
     }
 }
 
-class DerivedUiImpl<T : DerivedCallback<DerivedUi>> : BaseUiImpl<DerivedUi, T>, DerivedUi {
-    constructor(callback: T) : super(callback) {
+class DerivedUiImpl : BaseUiImpl<DerivedUi, DerivedCallback>, DerivedUi {
+    constructor(callback: DerivedCallback) : super(callback) {
     }
 }
 
-class DerivedUiCallbackImpl : DerivedCallback<DerivedUi> {
+class DerivedUiCallbackImpl : DerivedCallback {
     override fun onUiReady(ui: DerivedUi) {
     }
 
@@ -36,5 +36,5 @@ class DerivedUiCallbackImpl : DerivedCallback<DerivedUi> {
 }
 
 fun main(args: Array<String>) {
-    DerivedUiImpl<DerivedUiCallbackImpl>(DerivedUiCallbackImpl()).makeUi()
+    DerivedUiImpl(DerivedUiCallbackImpl()).makeUi()
 }

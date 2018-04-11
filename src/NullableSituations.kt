@@ -8,15 +8,16 @@ class Bomb (var a: Int) {
 }
 
 fun main(args: Array<String>) {
-    val bomb : Bomb? = Bomb(1)
+    var bomb : Bomb? = Bomb(1)
     //bomb?.b = 2
-    println(bomb?.a ?: "bomb is null")
-    println(bomb?.b ?: "bomb is null") // Elvis needs bomb.b to be non-null too
+    println(bomb?.a ?: "bomb-a is null")
+    println(bomb?.b ?: "bomb-b is null") // Elvis needs bomb.b to be non-null too
 
     val arr : ArrayList<String> = ArrayList()
     arr.add("abc")
     arr.add("bcd")
-    bomb?.appendSomeStuff(arr)
+    //bomb = null
+    bomb?.appendSomeStuff(arr) ?: println("bomb is null")
     println(bomb?.stuff)
     // Check HandleNullFieldOutsideClass for more ways to do this
 }

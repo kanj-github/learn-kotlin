@@ -7,6 +7,10 @@ class Bomb (var a: Int) {
     }
 }
 
+class Ant {
+    val text = "ABCD"
+}
+
 fun main(args: Array<String>) {
     var bomb : Bomb? = Bomb(1)
     //bomb?.b = 2
@@ -20,4 +24,7 @@ fun main(args: Array<String>) {
     bomb?.appendSomeStuff(arr) ?: println("bomb is null")
     println(bomb?.stuff)
     // Check HandleNullFieldOutsideClass for more ways to do this
+
+    val antIns: Ant? = Ant()
+    println(antIns?.text?.length) // Need to access length using ?. too because ansIns?.text is of type String?
 }

@@ -1,5 +1,6 @@
 /*
-* Make duplicate properties with non-nullable type with custom get. Like _str for str.
+* 1. If possible define the class in Java. Kotlin compiler can't fuck with that
+* 2. Make duplicate properties with non-nullable type with custom get. Like _str for str.
 * */
 
 class WorkWithMultipleNullableTypes {
@@ -80,5 +81,21 @@ class WorkWithMultipleNullableTypes {
         //nonNull.bomb.appendSomeStuff(listOf("a", "b", "4"))
 
         // Access _properties now
+    }
+
+    fun doSomethingWithJavaClass(obj: ClassWithMultipleNullableProps) {
+        if (obj.str == null && obj.ant != null) {
+            obj.str = obj.ant.text
+        } else if (obj.str == null) {
+            obj.str = "XYZ"
+            obj.ant = Ant()
+        }
+
+        if (obj.bomb == null) {
+            obj.bomb = Bomb(16)
+        }
+
+        // Access properties now
+        //obj.str.length
     }
 }

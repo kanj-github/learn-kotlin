@@ -13,6 +13,20 @@ fun main(args: Array<String>) {
     //b.capacity = 10
     b.stuff = "A string"
     b.showNumber()
+
+    println("thread " + Thread.currentThread().id)
+    val t1 = doInANewThread {
+        println("Some other thread " + Thread.currentThread().id)
+    }
+
+    t1.join()
+}
+
+fun doInANewThread(run: () -> Unit): Thread {
+    with(Thread(Runnable(run))) {
+        this.start()
+        return this
+    }
 }
 
 class Box(capacity: Int) { // capacity is val by default
